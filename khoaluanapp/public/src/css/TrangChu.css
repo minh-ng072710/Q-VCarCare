@@ -1,0 +1,21 @@
+.gioi-thieu-space {
+    height: 75vh;
+    width: 100vw;
+    display: block;
+    background-color: #fff;
+
+}
+
+.quy-trinh-lam-viec-space {
+    height: 86vh;
+    width: 100vw;
+    display: block;
+}
+
+/* div booking */
+.form-booking-space {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background-color: #fff;
+}

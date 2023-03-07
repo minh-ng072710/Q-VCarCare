@@ -1,0 +1,36 @@
+.items-space-km {
+    width: 100vw;
+    height: 80vh;
+    display: block;
+}
+
+.div-list-items {
+    height: 45vh;
+    width: 30vw;
+    border: solid 0.5px;
+}
+
+.div-list-items h4 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.div-list-items p {
+    margin-left: 5px;
+}
+
+.div-list-items h5 {
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 5px;
+    color: #FF8C00;
+}
+
+.div-list-items img {
+    width: 100%;
+    height: 50%;
+}
+
+.div-inform {
+    display: flex;
+}

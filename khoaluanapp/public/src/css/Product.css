@@ -1,0 +1,24 @@
+.div-list-items-sp {
+    height: 50vh;
+    width: 25vw;
+    border: solid 0.5px;
+}
+
+.div-list-items-sp h4 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.div-list-items-sp p {
+    margin-left: 5px;
+}
+
+.div-list-items-sp h5 {
+    text-align: center;
+    color: #FF8C00;
+}
+
+.div-list-items-sp img {
+    width: 90%;
+    height: 80%;
+}

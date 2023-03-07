@@ -1,0 +1,14 @@
+.div-list-items {
+    height: 50vh;
+    width: 27.2vw;
+    border: solid 0.5px;
+}
+
+.div-list-items h4 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.div-list-items p {
+    margin-left: 5px;
+}
