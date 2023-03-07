@@ -45,7 +45,7 @@ const customerSchema = new mongoose.Schema({
         default: "",
 
     },
-    cars: {
+    car: {
         type: String,
         require: false,
         min: 5,

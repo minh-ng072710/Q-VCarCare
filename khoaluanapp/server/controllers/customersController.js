@@ -70,9 +70,4 @@ module.exports.doiMatKhau = async (req, res) => {
     return res.json({ status: true, data: customersauKhiDoiMatKhau });
 };
 
-module.exports.layDanhSachKhachHang = async (req,res,next) => {
-    const {phone, firstName, lastName, address, cars,email,customerId} = req.body;
-    const phoneCheck = await Customer.findOne({ phone });
-    if (phoneCheck)
-        return res.json({ msg: "Phone number already used", status: false });
-}
+
