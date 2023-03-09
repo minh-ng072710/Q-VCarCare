@@ -12,7 +12,7 @@ export const getAllCustomer = () => {
     return fetch('https://dummyjson.com/users').then(res => res.json())
 }
 
-export const addService = `${host}/api/auth/addService`;
+export const addServiceRoute = `${host}/api/add/addService`;
 export const getAllService = () => {
     return fetch('http://localhost:4000/test').then(res => res.json());
 }

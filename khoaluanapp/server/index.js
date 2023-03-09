@@ -3,12 +3,15 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
 const app = express();
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", userRoutes)
+app.use("/api/add", serviceroutes)
+
 
 // < Kết nối MongoDB , mongoose > //
 
@@ -41,6 +44,7 @@ const BlogPost = new Schema({
 });
 const MyModel = mongoose.model('Ticket', BlogPost);
 
+
 app.get('/test', (req, res) => {
     const instance = new MyModel();
     instance.save(function (err) {
@@ -49,3 +53,6 @@ app.get('/test', (req, res) => {
 
     res.json({ 'test': 1 })
 })
+
+
+

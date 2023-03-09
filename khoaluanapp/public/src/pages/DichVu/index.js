@@ -1,10 +1,21 @@
-import { Avatar, Button, Space, Table, Typography } from "antd";
+import { Button, Space, Table, Typography } from "antd";
 import React, { useState, useEffect } from "react";
-import { getAllService } from "../../utils/APIRoutes";
+import { addServiceRoute, getAllService } from "../../utils/APIRoutes";
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import Input from "antd/es/input/Input";
+import { toast } from "react-toastify";
+import axios from "axios";
 export default function DichVu() {
     const [loading, setLoading] = useState(false)
     const [dataSource, setDataSource] = useState([])
+
+    const [values, setValues] = useState({
+        serviceId: "",
+        serviceName: "",
+        serviceContent: "",
+        time: "",
+        price: "",
+    });
 
     useEffect(() => {
         setLoading(true);
@@ -14,24 +25,33 @@ export default function DichVu() {
         // });
     }, []);
 
-    // ?????? //////
-    // const getAds = async () => {
-    //     const res = await axios.get('/ads')
-    //     console.log(res.data)
-    //   }
-    //   getAds()
 
-    const onAddService = () => {
-        // const newService = {
-        //     serviceId: "serviceId",
-        //     serviceName: "serviceName",
-        //     serviceContent: "serviceContent",
-        //     time: "time",
-        //     price: "price",
-        // };
-        // setDataSource = ((pre) => {
-        //     return [...pre, newService];
-        // });
+    const handleClick = async (e) => {
+        console.log("1");
+        const { serviceId, serviceName, serviceContent, time, price } = values;
+        const { data } = await axios.post(addServiceRoute, {
+            serviceId, serviceName, serviceContent, time, price,
+        })
+        if (data.status === false) {
+            toast.error(data.msg, toastOptions);
+            console.log("1");
+        }
+        if (data.status === true) {
+            localStorage.setItem("car-app-service", JSON.stringify(data.service));
+            console.log("2");
+
+        }
+    };
+
+    const toastOptions = {
+        position: "bottom-right",
+        autoClose: 8000,
+        draggable: true,
+        pauseOnHover: true,
+        theme: "dark"
+    };
+    const handleOnChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     const onDeleteService = (record) => {
@@ -42,7 +62,15 @@ export default function DichVu() {
             <Space size={20} direction={"vertical"}>
 
                 <Typography.Title level={4}>Dịch vụ</Typography.Title>
-                <Button onClick={onAddService}>Thêm</Button>
+                <Space>
+                    <Input placeholder="Mã dịch vụ" name="serviceId" onChange={handleOnChange} />
+                    <Input placeholder="Tên dịch vụ" name="serviceName" onChange={handleOnChange} />
+                    <Input placeholder="Thời gian" name="time" onChange={handleOnChange} />
+                    <Input placeholder="Thông tin chung" name="serviceContent" onChange={handleOnChange} />
+                    <Input placeholder="Giá tiền" name="price" onChange={handleOnChange} />
+                    <Button onClick={(e) => handleClick(e)}>Thêm</Button>
+
+                </Space>
                 <Table columns={[
                     {
                         key: "1",
@@ -51,28 +79,28 @@ export default function DichVu() {
                     },
                     {
                         key: "2",
-                        title: "Service Id",
+                        title: "Mã dịch vụ",
                         dataIndex: "serviceId",
                     },
 
                     {
                         key: "3",
-                        title: "Service Name",
+                        title: "Tên dịch vụ",
                         dataIndex: "serviceName",
                     },
                     {
                         key: "4",
-                        title: "Time",
+                        title: "Thời gian",
                         dataIndex: "time",
                     },
                     {
                         key: "5",
-                        title: "Service Content",
+                        title: "Thông tin chung",
                         dataIndex: "serviceContent",
                     },
                     {
                         key: "6",
-                        title: "Price",
+                        title: "Giá tiền",
                         dataIndex: "price",
                     },
                     {

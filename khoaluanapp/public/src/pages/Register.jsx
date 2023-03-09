@@ -50,7 +50,6 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (handleValidation()) {
-            console.log("in validtaion", registerRoute);
             const { password, username, email, phone } = values;
             const { data } = await axios.post(registerRoute, {
                 username,
