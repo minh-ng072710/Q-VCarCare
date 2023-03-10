@@ -1,22 +1,23 @@
 // < Các lib , route> //
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const userRoutes = require("./routes/userRoutes");
-const serviceRoutes = require("./routes/serviceRoutes");
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+import userRoutes from './routes/userRoutes.js';
+
+import serviceRoutes from './routes/serviceRoutes.js';
+
 const app = express();
-require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", userRoutes)
-app.use("/api/add", serviceroutes)
+app.use("/api/add", serviceRoutes)
 
 
 // < Kết nối MongoDB , mongoose > //
-
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect('mongodb://localhost:27017/carecare', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
@@ -28,8 +29,8 @@ mongoose.connect(process.env.MONGO_URL, {
     });
 
 // < Chạy port server> //
-const server = app.listen(process.env.PORT, () => {
-    console.log(`Server Started on PORT ${process.env.PORT}`);
+const server = app.listen(4000, () => {
+    console.log(`Server Started on PORT 4000`);
 });
 
 
@@ -55,4 +56,5 @@ app.get('/test', (req, res) => {
 })
 
 
+export default app;
 

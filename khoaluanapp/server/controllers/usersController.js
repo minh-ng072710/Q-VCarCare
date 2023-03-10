@@ -1,5 +1,6 @@
-const User = require("../model/userModel");
-const bcrypt = require("bcrypt");
+import User from '../model/userModel';
+import bcrypt from 'bcrypt';
+
 // < Đăng ký tài khoản > //
 module.exports.register = async (req, res, next) => {
     try {

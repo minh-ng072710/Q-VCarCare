@@ -1,6 +1,10 @@
-const { addService } = require("../../public/src/utils/APIRoutes");
+import express from 'express';
 
-const router = require("express").Router();
-router.post("/addService", addService);
+var router = express.Router();
 
-module.exports = router;
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'World111' });
+});
+
+export default router;

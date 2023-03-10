@@ -1,8 +1,10 @@
-const { register, login, checkPhoneTonTai, doiMatKhau, } = require("../controllers/usersController");
+import express from 'express';
 
-const router = require("express").Router();
-router.post("/register", register);
-router.post("/login", login);
-router.post("/checkPhoneTonTai", checkPhoneTonTai);
-router.post("/doiMatKhau", doiMatKhau);
-module.exports = router;
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'World111' });
+});
+
+export default router;
